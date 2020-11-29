@@ -1,0 +1,35 @@
+
+<div>
+<%= @post.title %>
+</div>
+<div>
+<%= @post.body %>
+</div>
+<div>
+<%= link_to "Edit", edit_post_path(@post) %>
+</div>
+<div>
+<%= link_to "Delete", posts_path(@post), method: :delete %>
+</div>
+<div>
+<p>Comment</p>
+</div>
+<%= form_with(model: [@post, @comment], local: true) do |f| %>
+    <%= f.text_area(
+       :body,
+       cols: 100,
+       rows: 5,
+       placeholder: "Whats on your mind?") %>
+       <%= f.submit "Add" %>
+       <% end %>
+       <ul>
+<% @comments.each do |c| %>
+    <li>
+    <%= c.body %>
+    <%= link_to("Delete",
+     post_comment_path(@post, c),
+      method: :delete )%>
+
+    </li>
+    <% end %>
+    </ul>

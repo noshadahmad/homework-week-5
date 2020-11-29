@@ -1,0 +1,12 @@
+<div class="form-group">
+
+<% @post.each do |p| %>
+    <div class="form-control">
+      <%= link_to p.title, post_path(p)%>
+      </div>
+      <div class="form-control">
+      <%= p.body %>
+      </div>
+   
+  <% end %>
+  </div>
